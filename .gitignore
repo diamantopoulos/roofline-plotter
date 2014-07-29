@@ -4,4 +4,6 @@
 Debug
 Release
 RemoteSystemsTempFiles
-
+.metadata
+.settings
+.*
