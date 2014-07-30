@@ -7,8 +7,8 @@
 //============================================================================
 
 #include <iostream>
-#include "../lib/cpucounters.h"
-#include "../lib/utils.h"
+#include "cpucounters.h"
+#include "utils.h"
 using namespace std;
 
 int main() {
