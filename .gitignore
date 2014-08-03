@@ -1,9 +1,19 @@
+#Compiled/Object files/Executables
 *.o
 *.x
+*.d
+*.csv
 
+#Eclipse/OS generated folders
 Debug
 Release
 RemoteSystemsTempFiles
 .metadata
 .settings
+
+#Hidden files
 .*
+
+
+#Restricted PCM library
+lib/pcm-2.6-private
