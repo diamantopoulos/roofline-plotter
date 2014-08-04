@@ -33,7 +33,7 @@ Y_MAX=50.0
 
 PEAK_PERF=[2.0, 2.0]
 PEAK_PERF_LABELS=['Scalar Peak Performance']
-PEAK_BW=[6.3]
+PEAK_BW=[16.3]
 PEAK_BW_LABELS = ['Bandwidth']
 
 INVERSE_GOLDEN_RATIO=0.618
@@ -112,6 +112,7 @@ for p,l in zip(PEAK_PERF, PEAK_PERF_LABELS):
 
 #BW line and text
 for bw,l in zip(PEAK_BW, PEAK_BW_LABELS):
+    print zip(PEAK_BW, PEAK_BW_LABELS)
     addBWLine(bw,l)
 
 #Plot the roofline graph.

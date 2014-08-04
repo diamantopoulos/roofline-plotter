@@ -33,7 +33,7 @@ endif
 pcm:
 	cd $(PCMLIB) && $(MAKE)
 
-pcm-private:
+pcm-restricted:
 	cd $(PCMLIB_RESTRICTED) && $(MAKE)
 
 roof.o: $(SRC)/RooflinePlotter.cpp $(PCMLIB)/cpucounters.h $(PCMLIB)/msr.h $(PCMLIB)/pci.h $(PCMLIB)/client_bw.h
