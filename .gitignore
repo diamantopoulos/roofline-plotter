@@ -9,10 +9,8 @@ Debug
 Release
 RemoteSystemsTempFiles
 .metadata
-.settings
 
 #Hidden files
-.*
 
 
 #Restricted PCM library
