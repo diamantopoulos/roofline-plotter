@@ -13,8 +13,6 @@ Version
 Authors
 -----------
 
-Dillinger uses a number of open source projects to work properly:
-
 * [Shailen Sobhee] - Main developer, Intel Corporation
 * [Andrey Semin] - Lead supervisor, Intel Corporation
 

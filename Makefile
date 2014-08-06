@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2014 Shailen Sobhee
+# Written by Shailen Sobhee, Intel Corporation, 2014
 #
 example: main
 

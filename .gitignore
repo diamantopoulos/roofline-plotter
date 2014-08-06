@@ -3,6 +3,7 @@
 *.x
 *.d
 *.csv
+*.pyc
 
 #Eclipse/OS generated folders
 Debug
