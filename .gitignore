@@ -16,7 +16,7 @@ database.txt
 
 #Hidden/Temp files
 .~*
-
+*.png
 
 #Restricted PCM library
 lib/pcm-2.6-private

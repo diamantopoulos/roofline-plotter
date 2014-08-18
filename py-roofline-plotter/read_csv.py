@@ -27,21 +27,16 @@ def get_system_index(reader):
     for index, col_val in enumerate(header):
         if col_val == 'System':
             return index #In Spreadsheet, we count from 1, in python from 0
+        
+''' Return index in the CSV header file for Proc Energy (Joules)
+'''
+def get_proc_energy_index(reader):
+    header = reader.next()
+    for index, col_val in enumerate(header):
+        if col_val == 'Proc Energy (Joules)':
+            return index #In Spreadsheet, we count from 1, in python from 0
 
 
-# def get_roofline_points_system():
-#     op_intensity = []
-#     inst_per_cycle = []
-#     with open('all.csv', 'rb') as csvfile:
-#         reader = csv.reader(csvfile, delimiter=';')
-#         system_index = get_system_index(reader)
-#         csvfile.seek(0) #reset iterator to top of file
-#         for row in islice(reader, 2, None):
-#             inst_per_cycle.append(float(row[3]))
-#             read_write_from_MC = float(row[system_index+12]) +float(row[system_index+13])
-#             op_intensity.append(float(row[14]) / read_write_from_MC)
-#         return op_intensity, inst_per_cycle
-    
 def get_roofline_points_socket0():
     op_intensity = []
     inst_per_cycle = []
@@ -76,11 +71,13 @@ def get_roofline_points_socket1():
     inst_per_cycle
     op_intensity
 """
-def get_roofline_data_system():
+def get_roofline_data_system(csv_filename):
     time = []
     inst_per_cycle = []
     op_intensity = []
-    with open('all.csv', 'rb') as csvfile:
+    energy_SKT0 = []
+    energy_SKT1 = []
+    with open(csv_filename, 'rb') as csvfile:
         reader = csv.reader(csvfile, delimiter=';')
         header = reader.next()
         header = reader.next()
@@ -91,13 +88,16 @@ def get_roofline_data_system():
         csvfile.seek(0) #reset iterator to top of file
         system_index = get_system_index(reader)
         csvfile.seek(0) #reset iterator to top of file
+        proc_energy_index = get_proc_energy_index(reader)
         for row in islice(reader, 2, None):
             time.append(row[time_index]) #1
             inst_per_cycle.append(float(row[3]))
             read_write_from_MC = float(row[system_index+12]) +float(row[system_index+13])
             op_intensity.append(float(row[14]) / read_write_from_MC)
+            energy_SKT0.append(float(row[proc_energy_index]))
+            energy_SKT1.append(float(row[proc_energy_index+1]))
             
-        return time, inst_per_cycle, op_intensity
+        return time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 
 
 def get_timeline_data():
     time = []
