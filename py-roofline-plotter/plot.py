@@ -25,7 +25,7 @@ def addBWLine(BW, label):
     y = x*BW
     ax.plot(x, y, linewidth=0.75, color='black')
     yCoordinateTransformed = (log(X_MIN*BW)-log(Y_MIN))/(log(Y_MAX/Y_MIN))+0.16 #0.16 is the offset of the lower axis
-    #ax.text(X_MIN*1.1,(X_MIN*1.1*BW)*1.1, '           c'+label+' ('+str(BW)+' Bytes/Cycle)',fontsize=8, rotation=np.arctan(INVERSE_GOLDEN_RATIO * 0.8) * 180 / np.pi, verticalalignment = 'bottom')
+    ax.text(X_MIN*1.1,(X_MIN*1.1*BW)*1.1, '            '+label+' ('+str(BW)+' Bytes/Cycle)',fontsize=8, rotation=np.arctan(INVERSE_GOLDEN_RATIO * 0.8) * 180 / np.pi, verticalalignment = 'bottom')
     # ax.text(0.01,yCoordinateTransformed+0.05+0.0075*(len(str(BW))-1), label+' ('+str(BW)+' B/C)',fontsize=8, rotation=45, transform=ax.transAxes)
 
 #Filenames
@@ -36,14 +36,14 @@ def plotRooflines_only():
     
 
 def plotRoofline():
-    time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 = read_csv.get_roofline_data_system('csv/freq/dgemm2.7Ghz.csv')
-    ax.plot(op_intensity, inst_per_cycle, 'r.', markersize=1.8, label='dgemm 2.7 Ghz') 
-    time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 = read_csv.get_roofline_data_system('csv/freq/dgemm2.2Ghz.csv')
-    ax.plot(op_intensity, inst_per_cycle, 'k.', markersize=1.8, label='dgemm 2.2 Ghz')
-    time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 = read_csv.get_roofline_data_system('csv/freq/dgemm1.4Ghz.csv')
-    ax.plot(op_intensity, inst_per_cycle, 'g.', markersize=1.8, label='dgemm 1.4 Ghz')
-    time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 = read_csv.get_roofline_data_system('csv/freq/dgemm1.2Ghz.csv')
-    ax.plot(op_intensity, inst_per_cycle, 'b.', markersize=1.8, label='dgemm 1.2 Ghz')
+    time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 = read_csv.get_roofline_data_system('csv/cores/nodeperf_1_2.7.csv')
+    ax.plot(op_intensity, inst_per_cycle, 'r.', markersize=1.8, label='dgemm 1 core 2.7 Ghz') 
+    time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 = read_csv.get_roofline_data_system('csv/cores/nodeperf_2_2.7.csv')
+    ax.plot(op_intensity, inst_per_cycle, 'k.', markersize=1.8, label='dgemm 2 core 2.7 Ghz')
+#     time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 = read_csv.get_roofline_data_system('csv/freq/dgemm1.4Ghz.csv')
+#     ax.plot(op_intensity, inst_per_cycle, 'g.', markersize=1.8, label='dgemm 1.4 Ghz')
+#     time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 = read_csv.get_roofline_data_system('csv/freq/dgemm1.2Ghz.csv')
+#     ax.plot(op_intensity, inst_per_cycle, 'b.', markersize=1.8, label='dgemm 1.2 Ghz')
     
 #     time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 = read_csv.get_roofline_data_system('csv/freq/ihpcg2.7Ghz.csv')
 #     ax.plot(op_intensity, inst_per_cycle, 'r.', markersize=1.8, label='ihpcg 2.7 Ghz') 
@@ -55,7 +55,7 @@ def plotRoofline():
 #     ax.plot(op_intensity, inst_per_cycle, 'b.', markersize=1.8, label='ihpcg 1.2 Ghz')
 #      
     
-    legend = ax.legend(bbox_to_anchor=(0.25, 1),loc='upper right', shadow=True)
+    legend = ax.legend(bbox_to_anchor=(1.35, 0),loc='lower right', shadow=True)
     
     #The frame is matplotlib.patches.Rectangle instance surrounding the legend.
     frame = legend.get_frame()
@@ -66,7 +66,7 @@ def plotRoofline():
         label.set_fontsize('8')
     
     for label in legend.get_lines():
-        label.set_linewidth(1.5)  # the legend line width
+        label.set_linewidth(1)  # the legend line width
     
     
     
@@ -129,10 +129,10 @@ def plotRoofline_socket1():
 
     
 
-X_MIN=0.001
+X_MIN=0.01
 X_MAX=10
 Y_MIN=0.1
-Y_MAX=4.1
+Y_MAX=6
 
 PEAK_PERF=[4.0]
 PEAK_PERF_LABELS=['Scalar Peak Performance']

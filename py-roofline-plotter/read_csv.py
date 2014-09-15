@@ -1,12 +1,16 @@
 import numpy
 from pylab import *
 
+import utilities
 from itertools import islice
 import csv 
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
 import matplotlib.font_manager as fm
+
+
+time_format = '%H:%M:%S.%f'
 
 ''' Return index in the CSV header file for Socket[index]
 '''
@@ -99,15 +103,24 @@ def get_roofline_data_system(csv_filename):
             
         return time, inst_per_cycle, op_intensity, energy_SKT0, energy_SKT1 
 
-def get_timeline_data():
+def get_timeline_data(csv_filename):
     time = []
+    time_stamp = []
+    energy = []
+    energy_incremental = []
     inst_per_cycle = []
     op_intensity = []
-    with open('all.csv', 'rb') as csvfile:
+    
+    energy_inc = 0
+    with open(csv_filename, 'rb') as csvfile:
         reader = csv.reader(csvfile, delimiter=';')
         
-        header = reader.next()
-        header = reader.next()
+        header = reader.next() #First header
+        for index, col_val in enumerate(header):
+            if col_val == 'System Pack C-States':
+                sys_pack_C_state = index
+            
+        header = reader.next() # second header
         for index, col_val in enumerate(header):
             if col_val == 'Time':
                 time_index = index
@@ -116,17 +129,24 @@ def get_timeline_data():
         for row in islice(reader, 2, None):
             inst_per_cycle.append(float(row[3]))
             time.append(row[time_index]) #1
-        return time, inst_per_cycle
+            energy.append(row[sys_pack_C_state+4]) #Proc Energy (Joules)
+            
+            #Get incremental Energy
+            energy_inc += float(row[sys_pack_C_state+4]) 
+            energy_incremental.append(energy_inc)
+
+        
+        #Get incremental time
+        #time_stamp.append(0)
+        initial_date_time = datetime.strptime(time[0], time_format)
+        initial_time = initial_date_time.strftime(time_format)
+
+        for i in range(len(time)):
+            date_time = datetime.strptime(time[i], time_format)
+            time_string = date_time.strftime(time_format)
+            diff = date_time - initial_date_time
+            time_stamp.append(diff.total_seconds())
+            
+        return time, time_stamp, inst_per_cycle, energy, energy_incremental
 
 
-# ax.set_xticks(x) # Tickmark + label at every plotted point
-# ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
-
-
-
-
-# Format the x-axis for dates (label formatting, rotation)
-# fig.autofmt_xdate(rotation=45)
-# fig.tight_layout()
-
-plt.show()
