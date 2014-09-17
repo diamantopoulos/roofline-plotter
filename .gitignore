@@ -11,14 +11,14 @@ Release
 RemoteSystemsTempFiles
 .metadata
 .settings
-
+.cproject
 #Rync exclude database
 database.txt
 
 #Hidden/Temp files
 .~*
 *.png
-
+tmp 
 #Restricted PCM library
 lib/pcm-2.6-private
 lib/ssg_intelpcm-main

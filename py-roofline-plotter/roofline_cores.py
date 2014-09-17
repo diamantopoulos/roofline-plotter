@@ -4,12 +4,16 @@ import read_csv
 
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
+from matplotlib.font_manager import FontProperties
 
 import matplotlib.dates as mdates
 from datetime import datetime
 
-font = fm.FontProperties(
-        family = 'Gill Sans', fname = 'wqy-zenhei.ttc')
+#Font properties
+font_family = ['serif', 'sans-serif', 'monospace']
+font_style  = ['normal', 'italic', 'oblique']
+font = FontProperties()
+font.set_family(font_family[1])
 
 def addPerfLine(peakPerf, label):
     #Peak performance line and text
@@ -109,7 +113,7 @@ ax = fig.add_subplot(111) #roofline plot
 
 
 
-#ax.set_yscale('log', basey=2)
+ax.set_yscale('log', basey=2)
 ax.set_xscale('log', basex=2)
 
 #formatting:

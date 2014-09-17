@@ -97,7 +97,7 @@ fig2.subplots_adjust(left=0.07, bottom=0.10, right=0.89, top=0.95, wspace=0.86, 
 fig3.subplots_adjust(left=0.07, bottom=0.10, right=0.89, top=0.95, wspace=0.86, hspace=0.27)
  
 
-plot_all_graphs()
+#plot_all_graphs()
 
 
 xlim(xmin=0) # start at 0

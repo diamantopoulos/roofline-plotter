@@ -15,11 +15,20 @@
 					<folderInfo id="intel.linux.x86_64.exe.rel.949124752._14.0.0" name="/" resourcePath="">
 						<toolChain id="intel.toolchain.linux.x86_64.exe.rel.1358612099_14.0.0" name="Intel Toolchain for Executable on Intel(R) 64" superClass="intel.toolchain.linux.x86_64.exe.rel_14.0.0">
 							<targetPlatform archList="x86_64" binaryParser="org.eclipse.cdt.core.ELF" id="intel.platform.linux.x86_64.exe.rel_14.0.0.1218186857" name="Platform.Executable.Release" osList="linux" superClass="intel.platform.linux.x86_64.exe.rel_14.0.0"/>
-							<builder buildPath="${workspace_loc:/roofline-plotter/Release}" id="intel.builder.linux.x86_64.exe.rel.301504775_14.0.0" managedBuildOn="true" name="Intel Builder.Release" superClass="intel.builder.linux.x86_64.exe.rel_14.0.0"/>
-							<tool id="intel.cpp.compilestep.linux.x86_64.exe.rel.1501278925_14.0.0" name="Intel Intel(R) 64 C++ Compiler " superClass="intel.cpp.compilestep.linux.x86_64.exe.rel_14.0.0"/>
-							<tool id="intel.c.compilestep.linux.x86_64.exe.rel.1124252672_14.0.0" name="Intel Intel(R) 64 C Compiler" superClass="intel.c.compilestep.linux.x86_64.exe.rel_14.0.0"/>
+							<builder buildPath="${workspace_loc:/roofline-plotter/Release}" id="intel.builder.linux.x86_64.exe.rel.301504775_14.0.0" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Intel Builder" superClass="intel.builder.linux.x86_64.exe.rel_14.0.0"/>
+							<tool id="intel.cpp.compilestep.linux.x86_64.exe.rel.1501278925_14.0.0" name="Intel Intel(R) 64 C++ Compiler " superClass="intel.cpp.compilestep.linux.x86_64.exe.rel_14.0.0">
+								<inputType id="intel.cpp.compilestep.input.235029848" superClass="intel.cpp.compilestep.input"/>
+							</tool>
+							<tool id="intel.c.compilestep.linux.x86_64.exe.rel.1124252672_14.0.0" name="Intel Intel(R) 64 C Compiler" superClass="intel.c.compilestep.linux.x86_64.exe.rel_14.0.0">
+								<inputType id="intel.c.compilestep.input.1279613894" superClass="intel.c.compilestep.input"/>
+							</tool>
 							<tool id="intel.c.linkstep.linux.x86_64.exe.rel.426383834_14.0.0" name="Intel Intel(R) 64 C Linker" superClass="intel.c.linkstep.linux.x86_64.exe.rel_14.0.0"/>
-							<tool id="intel.cpp.linkstep.linux.x86_64.exe.rel.820574351_14.0.0" name="Intel Intel(R) 64 C++ Linker" superClass="intel.cpp.linkstep.linux.x86_64.exe.rel_14.0.0"/>
+							<tool id="intel.cpp.linkstep.linux.x86_64.exe.rel.820574351_14.0.0" name="Intel Intel(R) 64 C++ Linker" superClass="intel.cpp.linkstep.linux.x86_64.exe.rel_14.0.0">
+								<inputType id="intel.linkstep.input.968346549" superClass="intel.linkstep.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
 						</toolChain>
 					</folderInfo>
 				</configuration>
@@ -40,15 +49,25 @@
 					<folderInfo id="intel.linux.x86_64.exe.dbg.1579038617._14.0.0" name="/" resourcePath="">
 						<toolChain id="intel.toolchain.linux.x86_64.exe.dbg.1706266664_14.0.0" name="Intel Toolchain for Executable on Intel(R) 64" superClass="intel.toolchain.linux.x86_64.exe.dbg_14.0.0">
 							<targetPlatform archList="x86_64" binaryParser="org.eclipse.cdt.core.ELF" id="intel.platform.linux.x86_64.exe.dbg_14.0.0.1806893553" name="Platform.Executable.Debug" osList="linux" superClass="intel.platform.linux.x86_64.exe.dbg_14.0.0"/>
-							<builder buildPath="${workspace_loc:/roofline-plotter/Debug}" id="intel.builder.linux.x86_64.exe.dbg.985280617_14.0.0" managedBuildOn="true" name="Intel Builder.Debug" superClass="intel.builder.linux.x86_64.exe.dbg_14.0.0"/>
-							<tool id="intel.cpp.compilestep.linux.x86_64.exe.dbg.1112718343_14.0.0" name="Intel Intel(R) 64 C++ Compiler " superClass="intel.cpp.compilestep.linux.x86_64.exe.dbg_14.0.0"/>
-							<tool id="intel.c.compilestep.linux.x86_64.exe.dbg.758800543_14.0.0" name="Intel Intel(R) 64 C Compiler" superClass="intel.c.compilestep.linux.x86_64.exe.dbg_14.0.0"/>
+							<builder buildPath="${workspace_loc:/roofline-plotter/Debug}" id="intel.builder.linux.x86_64.exe.dbg.985280617_14.0.0" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Intel Builder" superClass="intel.builder.linux.x86_64.exe.dbg_14.0.0"/>
+							<tool id="intel.cpp.compilestep.linux.x86_64.exe.dbg.1112718343_14.0.0" name="Intel Intel(R) 64 C++ Compiler " superClass="intel.cpp.compilestep.linux.x86_64.exe.dbg_14.0.0">
+								<inputType id="intel.cpp.compilestep.input.864273183" superClass="intel.cpp.compilestep.input"/>
+							</tool>
+							<tool id="intel.c.compilestep.linux.x86_64.exe.dbg.758800543_14.0.0" name="Intel Intel(R) 64 C Compiler" superClass="intel.c.compilestep.linux.x86_64.exe.dbg_14.0.0">
+								<inputType id="intel.c.compilestep.input.1005323163" superClass="intel.c.compilestep.input"/>
+							</tool>
 							<tool id="intel.c.linkstep.linux.x86_64.exe.dbg.622534958_14.0.0" name="Intel Intel(R) 64 C Linker" superClass="intel.c.linkstep.linux.x86_64.exe.dbg_14.0.0"/>
-							<tool id="intel.cpp.linkstep.linux.x86_64.exe.dbg.1532010067_14.0.0" name="Intel Intel(R) 64 C++ Linker" superClass="intel.cpp.linkstep.linux.x86_64.exe.dbg_14.0.0"/>
+							<tool id="intel.cpp.linkstep.linux.x86_64.exe.dbg.1532010067_14.0.0" name="Intel Intel(R) 64 C++ Linker" superClass="intel.cpp.linkstep.linux.x86_64.exe.dbg_14.0.0">
+								<inputType id="intel.linkstep.input.1547218048" superClass="intel.linkstep.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
 						</toolChain>
 					</folderInfo>
 				</configuration>
 			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
